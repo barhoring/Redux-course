@@ -14,16 +14,13 @@ const listReducer = (lists = defaultLists, action) => {
     // and add another card to the cards ids list
     entities[listId] = {
       ...entities[listId],
-      cards: entities[listId].cards.concat(cardId),
-      // cards: [...entities[listId].cards, cardId]
+      // cards: entities[listId].cards.concat(cardId),
+      cards: [...entities[listId].cards, cardId],
     };
 
     return {
       ...lists,
       entities,
-      // equivalet to
-      // ...entites
-      // ids: [...lists.ids],
     };
   }
   return lists;
