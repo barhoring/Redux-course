@@ -1,6 +1,7 @@
 // Every obj in this file will get dispatch(obj)
 
 const CARD_CREATE = "CARD_CREATE";
+const CARD_DELETE = "CARD_DELETE";
 
 const defaultCardData = { title: "", description: "", assignedTo: "" };
 
@@ -16,5 +17,13 @@ export const createCard = (listId, cardData) => {
   return {
     type: CARD_CREATE,
     payload: { card, listId, cardId },
+  };
+};
+
+export const removeCard = (cardId, listId) => {
+  console.log("in remove card");
+  return {
+    type: CARD_DELETE,
+    payload: { cardId, listId },
   };
 };

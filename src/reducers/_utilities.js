@@ -1,4 +1,4 @@
-import { set, get, pipe } from "lodash/fp";
+import { set, get, pipe, omit } from "lodash/fp";
 
 // State is cards
 export const addEntity = (state, entity, cardId) => {
@@ -10,9 +10,22 @@ export const addEntity = (state, entity, cardId) => {
   )(state);
 };
 
+export const removeEntity = (state, cardId) => {
+  // remoev the entity and its id
+  console.log("here");
+
+  return pipe(
+    omit(`entities.${cardId}`),
+    set(
+      ["ids"],
+      state.ids.filter((id) => id !== cardId)
+    )
+  )(state);
+};
+
 // Appened the cardId to the cards prop of the list
 // State is lists
-export const addCardIdToList = (listId, cardId, lists) => {
+export const addCardIdToList = (lists, listId, cardId) => {
   // Get a copy
   return addIdToChildren(lists, listId, "cards", cardId);
 };
@@ -21,4 +34,16 @@ const addIdToChildren = (state, entityId, property, childId) => {
   const path = ["entities", entityId, property];
   const children = get(path)(state);
   return set(path, children.concat(childId), state);
+};
+
+export const removeCardIdFromList = (lists, listId, cardId) => {
+  return removeIdFromChildren(lists, listId, "cards", cardId);
+};
+
+const removeIdFromChildren = (state, entityId, property, childId) => {
+  const path = ["entities", entityId, property];
+  debugger;
+  const children = get(path)(state);
+  const newChildren = children.filter((id) => id !== childId);
+  return set(path, newChildren, state);
 };
