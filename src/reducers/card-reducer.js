@@ -7,9 +7,10 @@ const cardReducer = (cards = DefaultCards, action) => {
     return addEntity(cards, card, cardId);
   }
   if (action.type === "CARD_DELETE") {
-    const { cardId, listId } = action.payload;
+    const { cardId } = action.payload;
     return removeEntity(cards, cardId);
   }
+
   return cards;
 };
 

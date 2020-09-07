@@ -9,10 +9,17 @@ const List = ({ list = {}, removeList }) => {
       <h2>{list.title}</h2>
       <CreateCardContainer listId={list.id} />
       <div>
-        {list.cards.map((cardId) => (
-          <CardContainer key={cardId} cardId={cardId} listId={list.id} />
-        ))}
+        {list.cards &&
+          list.cards.map((cardId) => (
+            <CardContainer key={cardId} cardId={cardId} listId={list.id} />
+          ))}
       </div>
+      <button
+        className="list-remove danger"
+        onClick={() => removeList(list.id)}
+      >
+        Remove List
+      </button>
     </article>
   );
 };

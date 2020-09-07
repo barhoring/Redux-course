@@ -10,15 +10,15 @@ export const addEntity = (state, entity, cardId) => {
   )(state);
 };
 
-export const removeEntity = (state, cardId) => {
+export const removeEntity = (state, id) => {
   // remoev the entity and its id
   console.log("here");
-
+  debugger;
   return pipe(
-    omit(`entities.${cardId}`),
+    omit(`entities.${id}`),
     set(
       ["ids"],
-      state.ids.filter((id) => id !== cardId)
+      state.ids.filter((_id) => _id !== id)
     )
   )(state);
 };
@@ -42,7 +42,6 @@ export const removeCardIdFromList = (lists, listId, cardId) => {
 
 const removeIdFromChildren = (state, entityId, property, childId) => {
   const path = ["entities", entityId, property];
-  debugger;
   const children = get(path)(state);
   const newChildren = children.filter((id) => id !== childId);
   return set(path, newChildren, state);

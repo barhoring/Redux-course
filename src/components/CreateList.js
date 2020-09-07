@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class CreateList extends Component {
-  state = { title: '' };
+  state = { title: "" };
 
   get isValid() {
     const { title } = this.state;
@@ -20,13 +20,13 @@ class CreateList extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const { onCreateList } = this.props;
+    const { createList } = this.props;
 
-    if (onCreateList) {
-      onCreateList(this.state);
+    if (createList) {
+      createList(this.state);
     }
 
-    this.setState({ title: '' });
+    this.setState({ title: "" });
   };
 
   render() {
@@ -46,6 +46,7 @@ class CreateList extends Component {
           className="CreateList-submit"
           type="submit"
           disabled={this.isInvalid}
+          onClick={this.handleSubmit}
         />
       </form>
     );

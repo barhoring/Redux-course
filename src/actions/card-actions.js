@@ -1,4 +1,4 @@
-// Every obj in this file will get dispatch(obj)
+// Every obj returned by an exported function in this file will get dispatch(obj)
 
 const CARD_CREATE = "CARD_CREATE";
 const CARD_DELETE = "CARD_DELETE";

@@ -1,8 +1,6 @@
 import { schema, normalize } from "normalizr";
 
 import defaultState from "./default-state";
-// const { schema, normalize } = require("normalizr");
-// const defaultState = require("./default-state");
 
 const user = new schema.Entity("users");
 const card = new schema.Entity("cards", { assignedTo: user });
@@ -26,14 +24,5 @@ export const cards = {
   entities: normalizedCards.entities.cards,
   ids: normalizedCards.result,
 };
-
-const cards2 = {
-  entities: normalizedLists.entities.cards,
-  ids: Object.keys(normalizedLists.entities.cards),
-};
-
-console.log(cards2);
-
-// exports.default = { users, lists, cards };
 
 export default { users, lists, cards };
