@@ -1,12 +1,12 @@
 import { set, get, pipe, omit } from "lodash/fp";
 
 // State is cards
-export const addEntity = (state, entity, cardId) => {
+export const addEntity = (state, entity, id) => {
   return pipe(
     // Append the new card entity to the cards list, and add to ids
-    set(["entities", cardId], entity),
+    set(["entities", id], entity),
     // This create a new entry since the id is new
-    set(["ids"], state.ids.concat(cardId)) // this is more verbous than [...] IMO
+    set(["ids"], state.ids.concat(id)) // this is more verbous than [...] IMO
   )(state);
 };
 

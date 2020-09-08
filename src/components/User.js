@@ -1,6 +1,5 @@
 import React from "react";
 import md5 from "md5";
-import { users } from "../normalized-state";
 
 const createProfileImageUrl = ({ email }) => {
   const hash = md5(email.trim());

@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class CreateUser extends Component {
-  state = { name: '', email: '' };
+  state = { name: "", email: "" };
 
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const { onCreateUser } = this.props;
+    const { createUser } = this.props;
 
-    if (onCreateUser) onCreateUser(this.state);
+    if (createUser) createUser(this.state);
 
-    this.setState({ name: '', email: '' });
+    this.setState({ name: "", email: "" });
   };
 
   handleChange = (event) => {
