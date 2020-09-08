@@ -21,7 +21,6 @@ export const createCard = (listId, cardData) => {
 };
 
 export const removeCard = (cardId, listId) => {
-  console.log("in remove card");
   return {
     type: CARD_DELETE,
     payload: { cardId, listId },

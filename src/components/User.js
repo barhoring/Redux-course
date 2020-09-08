@@ -1,12 +1,13 @@
-import React from 'react';
-import md5 from 'md5';
+import React from "react";
+import md5 from "md5";
+import { users } from "../normalized-state";
 
 const createProfileImageUrl = ({ email }) => {
   const hash = md5(email.trim());
   return `https://www.gravatar.com/avatar/${hash}`;
 };
 
-const User = ({ user }) => {
+const User = ({ user, removeUser }) => {
   const profileImage = createProfileImageUrl(user);
 
   return (
@@ -15,6 +16,12 @@ const User = ({ user }) => {
       <div className="User-info">
         <h2>{user.name}</h2>
       </div>
+      <button
+        onClick={() => removeUser(user.id)}
+        className="user-remove danger"
+      >
+        Remove User
+      </button>
     </article>
   );
 };

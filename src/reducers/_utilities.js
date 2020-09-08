@@ -12,8 +12,6 @@ export const addEntity = (state, entity, cardId) => {
 
 export const removeEntity = (state, id) => {
   // remoev the entity and its id
-  console.log("here");
-  debugger;
   return pipe(
     omit(`entities.${id}`),
     set(
